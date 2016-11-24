@@ -28,8 +28,6 @@ public class ComputerDao extends AbstractDao<Computer, Long> {
         public final static Property Memory = new Property(1, int.class, "memory", false, "MEMORY");
     }
 
-    private DaoSession daoSession;
-
 
     public ComputerDao(DaoConfig config) {
         super(config);
@@ -37,7 +35,6 @@ public class ComputerDao extends AbstractDao<Computer, Long> {
     
     public ComputerDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
-        this.daoSession = daoSession;
     }
 
     /** Creates the underlying database table. */
@@ -74,12 +71,6 @@ public class ComputerDao extends AbstractDao<Computer, Long> {
             stmt.bindLong(1, id);
         }
         stmt.bindLong(2, entity.getMemory());
-    }
-
-    @Override
-    protected final void attachEntity(Computer entity) {
-        super.attachEntity(entity);
-        entity.__setDaoSession(daoSession);
     }
 
     @Override

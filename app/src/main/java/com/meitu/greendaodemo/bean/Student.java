@@ -14,7 +14,7 @@ import org.greenrobot.greendao.annotation.NotNull;
 /**
  * @author Jason on 2016/11/24.
  */
-@Entity(active = true)
+@Entity
 public class Student {
     @Id
     private Long id;
